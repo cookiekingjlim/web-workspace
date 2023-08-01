@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+  </head>
+  <body>
+    <h2>Http Header Information...</h2>
+
+    <!-- 패키지 : servlet.header-->
+    <h3>POST 방식</h3>
+    <form action="phs2" method="post">
+      <label> ID : <input type="text" name="id" /> </label>
+      <input type="submit" value="send" />
+    </form>
+
+    <br />
+
+    <h3>GET 방식</h3>
+    <a href="phs2?id=user">PrintHeaderServlet 으로 연결합니다.</a>
+  </body>
+</html>
