@@ -9,4 +9,34 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>GenericServletTest</display-name>
+    <servlet-name>GenericServletTest</servlet-name>
+    <servlet-class>servlet.generic.GenericServletTest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GenericServletTest</servlet-name>
+    <url-pattern>/gst</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>HttpServletTest</display-name>
+    <servlet-name>HttpServletTest</servlet-name>
+    <servlet-class>servlet.http.HttpServletTest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HttpServletTest</servlet-name>
+    <url-pattern>/hst</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>WordServlet</display-name>
+    <servlet-name>WordServlet</servlet-name>
+    <servlet-class>servlet.http.WordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WordServlet</servlet-name>
+    <url-pattern>/word</url-pattern>
+  </servlet-mapping>
 </web-app>
