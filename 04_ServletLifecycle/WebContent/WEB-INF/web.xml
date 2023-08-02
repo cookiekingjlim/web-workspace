@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>04_ServletLifecycle</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>LifecycleServlet1</display-name>
+    <servlet-name>LifecycleServlet1</servlet-name>
+    <servlet-class>servlet.life.LifecycleServlet1</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LifecycleServlet1</servlet-name>
+    <url-pattern>/life</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LifecycleServlet2</display-name>
+    <servlet-name>LifecycleServlet2</servlet-name>
+    <servlet-class>servlet.life.LifecycleServlet2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LifecycleServlet2</servlet-name>
+    <url-pattern>/life2</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LifecycleServlet3</display-name>
+    <servlet-name>LifecycleServlet3</servlet-name>
+    <servlet-class>servlet.life.LifecycleServlet3</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LifecycleServlet3</servlet-name>
+    <url-pattern>/life3</url-pattern>
+  </servlet-mapping>
+</web-app>
