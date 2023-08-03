@@ -24,24 +24,18 @@ import javax.servlet.http.HttpServletResponse;
 	 * 2) 파일에 저장된 값을 불러(읽어들임)와야 한다. -- init()  
 	 * */
 
-/**
- * Servlet implementation class LifecycleServlet3
- */
+
 public class LifecycleServlet3 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public int count = 0;
 	private String path = "d:\\test\\count.txt";
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+   
     public LifecycleServlet3() {
     	  System.out.println("1. LifecycleServlet 생성자..");
     }
 
-	/**
-	 * @see Servlet#init(ServletConfig)
-	 */
+
 	public void init(ServletConfig config) throws ServletException {
 		System.out.println("2. init... 호출..");
 		// 서버가 다시 시작될 때 init에서 파일에 저장된 내용을 읽어서 count에 다시 할당
@@ -58,9 +52,7 @@ public class LifecycleServlet3 extends HttpServlet {
 	}
 	
 
-	/**
-	 * @see Servlet#destroy()
-	 */
+
 	public void destroy() {
 		System.out.println("4. destroy... 호출..");
 		
@@ -79,9 +71,6 @@ public class LifecycleServlet3 extends HttpServlet {
 		}
 	}
 
-	/**
-	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("3. service... 호출..");
 		
