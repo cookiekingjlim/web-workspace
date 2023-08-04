@@ -19,8 +19,11 @@ public class ConfigServlet2 extends HttpServlet {
 	 * @see Servlet#init(ServletConfig)
 	 */
 	public void init(ServletConfig config) throws ServletException {
+		System.out.println("2. init... 호출..");
 		// 1. ServletConfig의 기능을 사용해서 path에 연결된 값을 받아온다.
+		path = config.getInitParameter("path");
 		// 2. BufferedReader, FileReader를 사용해서 파일을 읽어들인다.
+		BufferedReader br = new BufferedReader(new FileReader());
 		// 3. count값으로 필드 초기화
 	}
 
