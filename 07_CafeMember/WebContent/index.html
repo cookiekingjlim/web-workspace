@@ -72,32 +72,35 @@
       </form>
     </div>
     <script>
-      const age = document.querySelector("#age");
-      function checkData() {
-        // 나이를 숫자로 입력하지 않았을 때
-        // alert로 숫자를 입력하라고 메시지 띄우고 return false
-        const regExp = /^[0-9]+$/;
-        return regExp.test(age.value);
-      }
+            const age = document.querySelector("#age");
+            function checkData() {
+              // 나이를 숫자로 입력하지 않았을 때
+              // alert로 숫자를 입력하라고 메시지 띄우고 return false
+              const regExp = /^[0-9]+$/;
+              return regExp.test(age.value);
+            }
 
-      function validate() {
-        if (checkData()) {
-          alert("성공");
-          return true;
-        } else {
-          alert("숫자를 입력하세요.");
-          return false;
-        }
-        // console.log(checkData());
-        // return false;
-        // if (!checkData()) {
-        //
-        //
-        // } else {
-        //
-        //
-        // }
-      }
+            function validate() {
+              if (checkData()) {
+                alert("성공");
+                return true;
+              } else {
+                alert("숫자를 입력하세요.");
+                return false;
+              }
+
+
+
+      //        console.log(document.frm);
+      //      function chekData() {
+      //		  const age = documnet.frm.age.value;
+      //		  console.log(Number(age)); => 숫자가 아닌 걸 변환하려고 했더니 nan이 뜸
+      //		  if(isNan(age)) {
+      //			alert('숫자를 입력해주세요');
+      //			return false;
+      //			} else {
+      //			return true;
+      //			}
     </script>
   </body>
 </html>

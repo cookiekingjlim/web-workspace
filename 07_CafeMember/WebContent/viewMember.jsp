@@ -22,10 +22,15 @@
 	 %> 
 		 
 		 <div class="container">
-		 <% if(name!=null) {%>
-		 	<h4><%=name %>님이 방금 전 회원가입하셨습니다.</h4>	
-		 <% } %>
-		 <hr>
+      <h2>회원 조회</h2>
+      <form action="search">
+        검색할 회원 이름을 입력해주세요.<br>
+        <input type="text" name="name">
+        <input type="submit" value="조회">
+      </form>
+
+      <hr>
+
 			 <h2>전체 Cafe 명단 리스트</h2>
 			 <table class="table">
 				 <tr>
