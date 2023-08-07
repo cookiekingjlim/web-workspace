@@ -13,7 +13,7 @@
 	<ul>
 		<li>이름 : <%= vo.getName() %></li>
 		<li>나이 : <%= vo.getAge() %></li>
-		<li>이름 : <%= vo.getAddr() %></li>
+		<li>주소 : <%= vo.getAddr() %></li>
 	</ul>
 </body>
 </html>
