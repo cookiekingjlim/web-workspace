@@ -24,8 +24,8 @@ public class LoginServlet extends HttpServlet {
 		
 		try {
 			//3. DAO 연결
-			MemberDAO dao = new MemberDAO(); 
-			MemberDTO dto = dao.login(id, password);
+//			MemberDAO dao = new MemberDAO(); 
+			MemberDTO dto = MemberDAO.getInstance()./*dao*/login(id, password);
 			
 			//4. 데이터 바인딩 -> session
 			HttpSession session = request.getSession();

@@ -21,16 +21,6 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>AllMemberServlet</display-name>
-    <servlet-name>AllMemberServlet</servlet-name>
-    <servlet-class>servlet.controller.AllMemberServelt</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AllMemberServlet</servlet-name>
-    <url-pattern>/AllMemberServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>LoginServlet</display-name>
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>servlet.controller.LoginServlet</servlet-class>
@@ -49,7 +39,6 @@
     <servlet-name>FindMemberServlet</servlet-name>
     <url-pattern>/FindMemberServlet</url-pattern>
   </servlet-mapping>
- 
   <filter>
     <display-name>EncodingFilter</display-name>
     <filter-name>EncodingFilter</filter-name>
@@ -59,4 +48,14 @@
     <filter-name>EncodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AllMemberServlet</display-name>
+    <servlet-name>AllMemberServlet</servlet-name>
+    <servlet-class>servlet.controller.AllMemberServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AllMemberServlet</servlet-name>
+    <url-pattern>/AllMemberServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
