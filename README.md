@@ -35,6 +35,13 @@
 - 사용자의 요청을 서블릿에게 전달하기 위해서는 서블릿을 등록하고 매핑해야 한다.
 - 매핑하는 방법은 web.xml과 @annotation을 이용하는 방법이 있다.
 
+```java
+@WebServlet("접근 URL 패턴")
+public class 서블릿이름 extends HttpServlet {
+    // servlet code...
+}
+```
+
 ```xml
 <servlet>
     <servlet-name>서블릿 이름</servlet-name>
@@ -101,3 +108,121 @@ public class 클래스명 extends HttpServlet {
 - 서버 자원을 효율적으로 사용한다.(요청을 스레드 단위로 처리)
 - MVC 패턴을 쉽게 적용할 수 있다.
 - JSP 파일의 배포 위치는 HTML 파일과 동일하다.
+
+## EL
+
+- EL(Expression Language)은 JSP 2.0 버전에서 추가된 표현 언어
+- 표현식(Expression) 태그를 대신하여 클라이언트에 출력하고자 하는 값들을 좀 더 간결하게 사용하는 방법
+
+```
+<%= request.getParameter("name") %>
+        =>
+${param.name}
+```
+
+### EL 내장 객체
+
+- pageScope : Page 영역 객체에 접근
+- requestScope : Request 영역 객체에 접근
+- sessionScope : Session 영역 객체에 접근
+- applicationScope : Application 영역 객체에 접근
+- param : 전달된 파라미터 값을 받아올 때 사용
+- paramValues : 전달된 파라미터들을 배열로 받아올 때 사용
+
+### EL 연산자
+
+- 나눗셈(/) : EL 연산자는 div를 사용
+- 나머지(%) : EL 연산자는 mod를 사용
+- and, or, ! : EL 연산자는 and, or, not 사용
+- < : EL 연산자는 lt(less than) 사용
+- > : EL 연산자는 gt(greater than) 사용
+- <= : EL 연산자는 le(less or equal) 사용
+- >=: EL 연산자는 ge(greater or equal) 사용
+- == : EL 연산자는 eq(equal) 사용
+- != : EL 연산자는 ne(not equal) 사용
+- null값 처리(value==null) : EL 연산자는 empty 사용
+
+## JSP 액션 태그
+
+- JSP 페이지에서 자바 코드를 직접 입력하지 않고 특정 작업을 수행하는데 사용하는 태그
+- 액션 태그의 경우 웹 브라우저에서 실행되는 것이 아니라 웹 컨테이너에서 실행된다.
+- 표준 액션 태그 : JSP 페이지에서 바로 사용, 태그 앞에 jsp 접두어가 붙음
+- 커스텀 액션 태그 : 별도의 라이브러리 설치 필요, 라이브러리 선언에 맞는 접두어가 붙음
+
+### JSTL(JSP Standard Tag Library)
+
+- JSP에서 사용하는 커스텀 태그
+- JSP 페이지에서 자주 사용하는 코드들을 사용하기 쉽게 태그로 만들어 표준으로 제공한다. 
+
+#### JSTL 라이브러리 등록
+
+- 톰캣(https://tomcat.appache.org)에서 JSTL 라이브러리를 다운로드한다.
+- 웹 프로젝트의 lib 폴더에 다운로드한 JSTL 라이브러리를 붙여 넣는다.
+- JSTL 라이브러리는 JSP 페이지에서 tqglib 지시자로 선언해야 사용 가능하다.
+
+```java
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefic="c" %>
+```
+
+#### c:set 태그
+- 변수를 선언하고 초기값을 대입하는 태그
+- 변수의 자료형은 별도로 선언하지 않지만 초기값은 반드시 기술해야 한다.
+- 선언된 변수는 EL 구문에서 사용이 가능하다.
+
+```jsp
+<c:set var="num" value="100" />
+${num}
+```
+
+- scope 속성은 변수가 저장된 영역을 지정한다.(기본값은 page)
+
+```jsp
+<c:set var="num" value="100" scope="request" />
+```
+
+- <c:set> ~ </c:set> 사이에 ","를 이용해서 배열이나 Collection 처럼 여러 개의 값을 지정할 수 있다.
+
+```jsp
+<c:set var="array" scope="request">
+yellow, blue, pink, red, green
+</c:set>
+```
+
+#### c:if 태그
+
+- 자바의 if 구문과 같은 역할을 하는 태그
+- 조건식은 test 속성에 EL 구문으로 기술해야 한다.
+- 조건식의 결과가 참일 대 `<c:if>~</c:if>` 사이에 있는 내용을 처리한다.
+
+```jsp
+<c:if test="${num1 > num2}">
+</c:if>
+```
+
+#### c:choose 태그
+
+- 자바의 switch 구문과 같은 역할을 하는 태그
+- 하위 태그인 `<c:when>`,`<c:otherwise>` 태그와 함께 사용되는데, 각각 switch 구문의 case, default 절과 비슷한 역할을 한다.
+
+```jsp
+<c:choose>
+    <c:when test="${num eq 0}"></c:when>
+    <c:when test="${num eq 1}"></c:when>
+    <c:otherwise></c:otherwise>
+</c:choose>
+```
+
+#### c:forEach 태그
+
+- 자바의 for 구문에 해당하는 역할을 하는 태그
+
+```jsp
+<c:forEach begin="1" end="10" items="${list}" var="value">
+</c:forEach>
+```
+
+- items: 반복할 객체 명(Collection 객체)
+- begin: 반복이 시작할 요소 번호
+- end: 반복이 끝나는 요소 번호
+- step: 반복할 횧수 번호
+- var: 현재 반복 횟수에 해당하는 변수 이름
