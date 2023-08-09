@@ -2,6 +2,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,16 +18,13 @@
 			<th>이름</th>
 			<th>주소</th>
 		</tr>
-		<%
-			ArrayList<MemberDTO> list = (ArrayList<MemberDTO>) request.getAttribute("list");
-			for(MemberDTO item : list) {
-		%>
+		<c:forEach items="${list}" var="item">
 			<tr>
-				<td><%= item.getId() %></td>
-				<td><%= item.getName() %></td>
-				<td><%= item.getAddress() %></td>
+				<td>${item.id}</td>
+				<td>${item.name}</td>
+				<td>${item.address}</td>
 			</tr>
-		<% } %>
+		</c:forEach>
 	</table>
 </body>
 </html>

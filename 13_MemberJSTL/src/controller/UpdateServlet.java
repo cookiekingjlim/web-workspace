@@ -33,9 +33,15 @@ public class UpdateServlet extends HttpServlet {
 			MemberDAO.getInstance().updateMember(dto);
 			
 			HttpSession session = request.getSession();
+//			session.setAttribute("dto", dto);
+			 System.out.println("dtocheck : " + session.getAttribute("dto"));
+			if(session.getAttribute("dto")!=null) {
 			session.setAttribute("dto", dto);
+			}
 			
-			response.sendRedirect("views/update_result.jsp");
+//			response.sendRedirect("views/update_result.jsp"); -> 바인딩 해서 넘길 때 주로 forward를 씀
+			request.getRequestDispatcher("views/update_result.jsp").forward(request, response);
+			
 		} catch (SQLException e) {}
 		
 		}

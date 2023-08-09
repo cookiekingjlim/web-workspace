@@ -9,11 +9,10 @@
 </head>
 <body>
 	<h1>회원 검색 결과</h1>
-	<% MemberDTO dto = (MemberDTO) request.getAttribute("dto"); %>
 	<ul>
-		<li>아이디 : <%= dto.getId() %></li>
-		<li>이름 : <%= dto.getName() %></li>
-		<li>주소 : <%= dto.getAddress() %></li>
+		<li>아이디 : ${dto.id}</li>
+		<li>이름 : ${dto.name}</li>
+		<li>주소 : ${dto.address}</li>
 	</ul>
 </body>
 </html>

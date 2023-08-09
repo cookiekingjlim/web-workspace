@@ -1,6 +1,7 @@
 <%@page import="servlet.model.vo.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,10 +12,9 @@
 	<h1>회원 관리 기능</h1>
 	
 	<ul>
-	<%
-	MemberDTO dto = (MemberDTO) session.getAttribute("dto");
-	if(dto==null) {
-	%>
+	<c:choose>
+		<c:when test="${empty dto}">
+	
 	<%-- 로그인이 되어있지 않은 경우 -> 회원가입,로그인 --%>
 	<li><a href="views/register.html">회원가입</a></li>
 		<%-- 회원가입: 아이디, 비밀번호, 이름, 주소 입력 받아서
@@ -28,9 +28,9 @@
 				-> LoginServelt / post 방식으로 전달
 				-> 해당하는 값들 받아서 session에 데이터 바인딩 : views/login_result.jsp(정보 출력)
 		 --%>
+		</c:when>
 	
-	<% } else { %>
-	
+		<c:otherwise>
 	<%-- 로그인 되었을 때 -> 회원검색, 전체회원보기, 로그아웃 --%>
 	<li><a href="views/search.html">회원검색</a></li>
 		<%-- 회원검색: 검색할 아이디를 입력받아서
@@ -51,7 +51,8 @@
 				-> update_result.jsp : ...님의 정보를 수정했다. + a링크로 index.jsp로
 		 --%>
 		
-	<% } %>
+		</c:otherwise>
+	</c:choose>
 	
 	</ul>
 </body>
