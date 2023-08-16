@@ -10,7 +10,7 @@ import servlet.controller.ModelAndView;
 import servlet.model.dao.MemberDAO;
 import servlet.model.vo.MemberVO;
 
-public class ShowMemberController implements Controller{
+public class AllMemberController implements Controller{
 
 	@Override
 	public ModelAndView handle(HttpServletRequest request, HttpServletResponse response) throws Exception {
