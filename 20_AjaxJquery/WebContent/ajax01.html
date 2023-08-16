@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- 버튼 눌렀을 시 비동기처리하는 것 -->
+	
+	<h2>Ajax Using Jquery...</h2>
+	
+	ID : <input type="text" id="id"><br>
+	PASSWORD : <input type="password" id="pass"><br>
+	<input type="button" value="ajaxBtn" id="ajaxBtn">
+	<div id="resultView"></div>
+	<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+	<script>
+	$('#ajaxBtn').click(function(){
+		const id = $('#id').val();
+		const pass = $('#pass').val();
+		
+		$.ajax({
+			// 요청
+			type: "post",
+			url: "JQueryAjax",
+			data:"id="+id+"&pass="+pass,
+			
+			// 응답
+			success: function(result) {
+				$('#resultView').html(result).css({
+					'background':'yellow',
+					'color':'red',
+					'font-weight':'bold'
+				});
+			},
+			// 응답 실패의 경우
+			error: function(){
+				alert('응답시간 지연...Error!!');
+			},
+			// 1초동안 서버로부터 응답이 없으면 에러 발생
+			timeout: 1000	
+		});
+	});
+	
+	</script>
+	
+</body>
+</html>

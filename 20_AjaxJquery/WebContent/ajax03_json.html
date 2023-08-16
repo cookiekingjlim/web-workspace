@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+</head>
+<body>
+	<input type="button" value="jsonBtn" id="jsonBtn">
+	<div id="resultView"></div>
+	
+	<script>
+		$('#jsonBtn').click(function(){
+			$.ajax({
+				type : 'post',
+				url : 'JsonAjax',
+				dataType : 'json',
+				
+				success: function(data){
+					console.log(data.result);	// result에 담아놨기때문에
+					const result = eval(`(${data.result})`);
+					console.log(result)
+					$('#resultView').html(`${result.addr}에 사는 ${result.age}살 ${result.name}입니다.`);
+				}
+			});
+		});
+	</script>
+</body>
+</html>
