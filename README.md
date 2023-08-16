@@ -226,3 +226,78 @@ yellow, blue, pink, red, green
 - end: 반복이 끝나는 요소 번호
 - step: 반복할 횧수 번호
 - var: 현재 반복 횟수에 해당하는 변수 이름
+
+
+# Ajax (Asynchronous JavaScript and XML)
+
+- JavaScript를 이용하여 비동기식으로 클라이언트와 서버가 데이터(XML)를 주고받는(통신) 방식
+- 데이터 형식은 XML 뿐만 아니라 Text, HTML, **JSON**, CSV 등 다양한 형식 사용 가능
+
+### 동기식 VS 비동기식
+
+- **동기식 데이터 통신** : 클라이언트가 서버로 데이터를 요청하면 응답이 올 때까지 다른 작업 대기
+- **비동기식 데이터 통신** : 클라이언트가 서버로 데이터 요청 후 응답을 기다리지 않고 다른 작업 수행 가능, 추후 응답이 오면 응답에 관련된 작업이 진행된다.
+
+### 특징
+
+- 전체 페이지를 갱신하지 않고 일부분만 업데이트가 가능하며 사용자에게 즉각적인 반응과 풍부한 UI 경험을 제공한다.
+- Javascript 또는 jQuery 방식으로 구현
+
+### 단점
+
+- Ajax는 Javascript이므로 브라우저에 따른 크로스 브라우저 처리 필요
+- 연속적인 데이터 요청 시 서버 부하가 증가하여 페이지가 느려짐
+- 페이지 내 복잡도가 증가하여 에러 발생 시 디버깅이 어려움
+
+## JavaScript 방식
+
+- 브라우저 내장 객체인 XMLHttpRequest를 이용하여 비동기식으로 데이터 송수신
+
+1. 객체 생성 : script문에 요청을 위한 XMLHttpRequest 객체 생성
+2. 서버 응답 처리 함수 생성 및 지정 : onreadystatechange에 함수 지정
+    - readyState : 서버 응답 상태 확인
+    - status : Http 응답 상태 코드 확인
+    - responseText / responseXML : 서버 응답 데이터 접근
+3. open() 메소드 호출하여 요청 방식, 대상(서버), 동기/비동기 지정
+4. send() 메소드 호출하여 대상(서버)에 전송
+
+## jQuery 방식
+
+- jQuery에 내장되어 있는 Ajax 통신을 위한 가장 기본적인 함수 이용
+
+```js
+$.ajax({
+    url: "요청이 전송되는 url이 포함된 문자열(필수 구현 속성)"
+    [settings...]
+});
+```
+
+### 주요 속성
+
+- url : 요청(request) 데이터를 전송할 URL
+- type : Http  요청 방식 지정(GET / POST)
+- data : 서버로 전송할 요청 Parameter 설정
+- datatype : 서버의 응답(response) 데이터의 형식(xml, text, json, html 등) 지정, 미작성 시 자동으로 판단하여 지정
+- success(data) : ajax 통신 성공 시 호출되는 함수를 지정, 매개변수로 응답 데이터(data)를 받음
+- error : ajax 통신 실패 시 호출되는 함수를 지정
+- complete : ajax 통신 성공 여부와 관계없이 통신 완료 후 실행되는 함수 지정
+- async : 비동기(true) / 동기(false) 지정
+
+### 장점
+
+- 코드 길이가 감소하여 JavaScript 방식보다 구현 방법이 간단
+- 직관적이며 다양한 방법의 코딩 가능
+- 크로스 브라우저 처리를 jQuery가 자동으로 해결
+
+## JSON
+
+- JavaScript Object Notation(자바스크립트 객체 표현법)의 약자
+- 간단한 포맷 : 괄호 {} 내에 key : value 쌍으로 구성 -> {"key" :  value}
+- key는 반드시 문자열을 사용하며, value는 String, Number, Boolean, Array, Object, null 저장 가능
+- 객체 {} 또는 배열 [] 데이터를 효율적으로 표시 가능
+
+### 특징
+
+- Ajax 통신에서 Object 타입의 데이터 전송 시 XML 대비 용량이 작고 속도가 빠름(경량 데이터 교환 방식)
+- 간단한 포맷을 가지고 있어 이해하기 쉬움
+- 순수 TEXT 기반으로 TEXT 형식이 구조화되어 있으며 대부분의 프로그래밍 언어에서 JSON 포맷 데이터를 핸들링 할 수 있는 라이브러리를 제공해 시스템간 객체 교환에 용이
