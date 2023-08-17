@@ -8,7 +8,6 @@ public class MemberVO {
 	public MemberVO() {
 	}
 	public MemberVO(String id, String password, String name, String address) {
-		super();
 		this.id = id;
 		this.password = password;
 		this.name = name;
