@@ -20,8 +20,10 @@ public class DispatcherServlet extends HttpServlet {
 		
 		Controller controller = HandlerMapping.getInstance().createController(command);
 		
+		ModelAndView mv = null;
 		try {
-			ModelAndView mv = controller.handle(request, response);
+			mv = controller.handle(request, response);
+		} catch (Exception e) {}
 			
 			if(mv != null) {
 				if(mv.isRedirect()) {
@@ -30,7 +32,6 @@ public class DispatcherServlet extends HttpServlet {
 					request.getRequestDispatcher(mv.getPath()).forward(request, response);
 				}
 			}
-		} catch (Exception e) {}
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -9,5 +9,15 @@
 <body>
 	<h1>장바구니</h1>
 	<a href="itemList.do">쇼핑 계속하기</a>
+	<table>
+		<tr>
+			<td>번호</td>
+			<td>상품이미지</td>
+			<td>상품명</td>
+			<td>상품 가격</td>
+			<td>수량</td>
+			
+		</tr>
+	</table>
 </body>
 </html>

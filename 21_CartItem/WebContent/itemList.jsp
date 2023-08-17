@@ -1,56 +1,69 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-<head>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <style>
-    body {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-    }
     h1 {
         text-align: center;
     }
-    div {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        margin: 10px;
+    #container {
+    	display:flex;
+    	justify-content: center;
     }
+    #container img {
+    	width : 150px;
+    	height : 150px;
+    	object-fit : cover;
+    }
+    table{
+  	    margin : 0 auto;
+    }
+    h2 {
+  	    text-align: center;
+    }
+    table img {
+	    width: 100px;
+	    height:100px;
+	    object-fit:cover;
+    }
+    
 </style>
+<head>
 <body>
 	<h1>Fruit Total List</h1>
-    <div>
-        <img src="../WebContent/img/berry.jpg" alt="">
-        <p>상품명 : 딸기</p>
-        <p>가격 : 4500원</p>
+    <div id="container">
+     <c:forEach items="${list}" var="fruit">
+     	<div>
+     	<a href="itemView.do?id=${fruit.itemId}">
+     		<img src = "${fruit.pictureUrl}">
+     	</a>
+     	<p>상품명 : ${fruit.itemName}</p>
+     	<p>가격 : ${fruit.price}원</p>
+     	</div>
+     </c:forEach>
     </div>
+    
+	<!-- 오늘 본 상품 -->
+	<c:if test="${not empty fruits}">
+    <hr>
+    <h2>오늘 본 상품</h2>
+    <table>
+    <tr>
+    <c:forEach items="${fruits}" var="fruit">
+    <td>
+    <img src="${fruit}">
+    </td>
+    </c:forEach>
+    </tr>
+    </table>
+	
+	</c:if>
 
-    <div>
-        <img src="../WebContent/img/grape.jpg" alt="">
-        <p>상품명 : 포도</p>
-        <p>가격 : 5000원</p>
-    </div>
-    <div>
-        <img src="../WebContent/img/gual.jpg" alt="">
-        <p>상품명 : 귤</p>
-        <p>가격 : 4000원</p>
-    </div>
-    <div>
-        <img src="../WebContent/img/kiwi.jpg" alt="">
-        <p>상품명 : 키위</p>
-        <p>가격 : 8000원</p>
-    </div>
-    <div>
-        <img src="../WebContent/img/lemon.jpg" alt="">
-        <p>상품명 : 레몬</p>
-        <p>가격 : 3000원</p>
-    </div>
     
 </body>
 </html>

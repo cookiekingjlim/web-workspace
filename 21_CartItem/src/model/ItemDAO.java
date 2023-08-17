@@ -23,8 +23,7 @@ public class ItemDAO implements ItemDAOTemplate{
 	
 	@Override
 	public Connection getConnection() throws SQLException {
-		Connection conn = DriverManager.getConnection(ServerInfo.URL, ServerInfo.USER, ServerInfo.PASSWORD);
-		return null;
+		return DriverManager.getConnection(ServerInfo.URL, ServerInfo.USER, ServerInfo.PASSWORD);
 	}
 
 	@Override
@@ -49,14 +48,7 @@ public class ItemDAO implements ItemDAOTemplate{
 		ResultSet rs = ps.executeQuery();
 		ArrayList<Item> list = new ArrayList();
 		while(rs.next()) {
-			Item item = new Item();
-			
-			item.setItemId(rs.getInt("itemId"));
-			item.setPictureUrl(rs.getString("url"));
-			item.setItemName(rs.getString("itemName"));
-			item.setPrice(rs.getInt("price"));
-			
-			list.add(item);
+			list.add(new Item(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getInt(6)));
 		}
 		closeAll(rs,ps,conn);
 		return list;
@@ -74,14 +66,14 @@ public class ItemDAO implements ItemDAOTemplate{
 		
 		Item item = null;
 		if(rs.next()) {
-			item = new Item();
+			item = new Item(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getInt(6));
 			
-			item.setItemId(rs.getInt("itemId"));
-			item.setItemName(rs.getString("itemName"));
-			item.setPrice(rs.getInt("price"));
-			item.setPictureUrl(rs.getString("pictureUrl"));
-			item.setDescription(rs.getString("desc"));
-			item.setCount(rs.getInt("count"));
+//			item.setItemId(rs.getInt("itemId"));
+//			item.setItemName(rs.getString("itemName"));
+//			item.setPrice(rs.getInt("price"));
+//			item.setPictureUrl(rs.getString("pictureUrl"));
+//			item.setDescription(rs.getString("desc"));
+//			item.setCount(rs.getInt("count"));
 			
 		}
 		
@@ -93,21 +85,18 @@ public class ItemDAO implements ItemDAOTemplate{
 	public boolean updateRecordCount(int itemId) throws SQLException {
 		Connection conn = getConnection();
 		
-		String query = "UPDATE item SET count=? WHERE item_id=?";
+		String query = "UPDATE item SET count=count+1 WHERE item_id=?";
 		PreparedStatement ps = conn.prepareStatement(query);
 		
-		int count = getItem(itemId).getCount();
+//		int count = getItem(itemId).getCount();
 		
-		ps.setInt(1, ++count);
-		ps.setInt(2, itemId);
+//		ps.setInt(1, ++count);
+		ps.setInt(1, itemId);
 		
-		int result = ps.executeUpdate();
-		
-		if(result == 1 ) {
+		int row = ps.executeUpdate();		// 결과값이 0 아니면 1이니까 int로 넘겨
+		boolean result = false;
+		if(row > 0 ) result = true;
 			return true;
-		} 
-		
-		return false;
 		
 	}
 
