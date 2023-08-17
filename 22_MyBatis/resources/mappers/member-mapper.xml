@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberMapper">
+<!-- namespace : 해당 mapper 파일의 고유한 별칭 -->
+
+<!-- 
+	* DML문일 경우, 
+	<insert|update|delete id="식별자" parameterType="전달받을 자바 타입(풀 클래스명)|별칭">
+	</insert|update|delete>
+	
+	* SELECT문일 경우,
+	<select id="식별자" [parameterType="전달받을 자바 타입(풀 클래스명)|별칭"]>
+			resultType="조회 결과를 반환하고자 하는 자바 타입" | resultMap="조회 결과를 뽑아서 매핑할 resultMap의 id">
+	</select>
+	
+	? 대신에 해당 sql문에 전달된 객체로부터 값을 꺼낼 때 #{필드명 또는 변수명 또는 키값} 이용
+ -->
+ 	<insert id="registerMember" parameterType="Member">
+ 		INSERT INTO member(id,password,name,address)
+ 		VALUES(#{id},#{password},#{name},#{address})
+ 	</insert>
+ 	
+ 	<!-- showAllMember, findByIdMember, login, updateMember -->
+ 	<select id="showAllMember" parameterType="Member">
+ 		SELECT * FROM member
+ 	</select>
+ 	
+ 	<select id="findByIdMember" parameterType="Member">
+ 		SELECT * FROM member
+ 		WHERE #{id}
+ 	</select>
+ 	
+ 	<select id="login" parameterType="Member">
+		SELECT * FROM member
+		WHERE #{id} AND #{password}
+ 	</select>
+</mapper>
