@@ -38,7 +38,7 @@
 											실패하면 views/find_faill.jsp
 		
 		 --%>
-	<li><a href="AllMemberServlet">전체회원보기</a></li>
+	<li><a href="member/all">전체회원보기</a></li>
 		<%-- 전체회원보기: views/allShow.jsp에 전체 리스트 출력 --%>
 	<li><a href="views/Logout.jsp">로그아웃</a></li>
 		<%-- 로그아웃: 로그아웃 하고 index.jsp로 오기--%>
