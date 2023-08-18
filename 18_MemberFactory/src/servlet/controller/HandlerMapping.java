@@ -25,7 +25,7 @@ public class HandlerMapping {
 			controller = new LoginController();
 		} else if(command.equals("update.do")) {
 			controller = new UpdateController();
-		} else if(command.equals("allShow.do")) {
+		} else if(command.equals("allMember.do")) {
 			controller = new AllMemberController();
 		} else if(command.equals("logout.do")) {
 			controller = new LogoutController();
