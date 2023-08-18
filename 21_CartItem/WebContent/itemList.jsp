@@ -3,10 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-
+<head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-</head>
+
 <style>
     h1 {
         text-align: center;
@@ -33,7 +33,7 @@
     }
     
 </style>
-<head>
+</head>
 <body>
 	<h1>Fruit Total List</h1>
     <div id="container">
