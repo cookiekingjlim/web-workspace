@@ -20,18 +20,28 @@
  		VALUES(#{id},#{password},#{name},#{address})
  	</insert>
  	
- 	<!-- showAllMember, findByIdMember, login, updateMember -->
- 	<select id="showAllMember" parameterType="Member">
- 		SELECT * FROM member
+ 	<!-- showAllMember, findByIdMember, login, updateMember // 전체를 의미하는 * 인식 못 해 -->
+ 	<select id="showAllMember" resultType="Member">
+ 		SELECT id, password, name, address	
+ 		FROM member
  	</select>
  	
- 	<select id="findByIdMember" parameterType="Member">
- 		SELECT * FROM member
- 		WHERE #{id}
+ 	<select id="findByIdMember" parameterType="String" resultType="Member">
+ 		SELECT * 
+ 		FROM member
+ 		WHERE id = #{id}
  	</select>
  	
- 	<select id="login" parameterType="Member">
-		SELECT * FROM member
-		WHERE #{id} AND #{password}
+ 	<!-- parameterType에 하나만 담아야 해 아이디+패스워드이므로 간단하게 멤버에 집어넣어 -->
+ 	<select id="login" parameterType="Member" resultType="Member">
+		SELECT * 
+		FROM member
+		WHERE id = #{id} AND password = #{password}
  	</select>
+ 	
+ 	<update id="updateMember" parameterType="Member">
+ 		UPDATE member 
+ 		SET password = #{password}, name = #{name}, address = #{address}
+ 		WHERE id = #{id}
+ 	</update>
 </mapper>

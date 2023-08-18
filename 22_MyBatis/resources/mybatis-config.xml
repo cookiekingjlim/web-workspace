@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
 	<properties>
 		<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-		<property name="username" value="sample"/>
-		<property name="password" value="SAMPLE"/>
+		<property name="username" value="sample" />
+		<property name="password" value="SAMPLE" />
 	</properties>
 	
 	<!-- setting : mybatis 구동시 선언할 설정들을 작성하는 영역 -->
@@ -17,7 +17,7 @@
 	
 	<!-- typeAlias : VO/DTO 클래스들의 풀클래스명을 단순한 클래스명으로 사용하기 위해서 별칭을 등록할 수 있는 영역 -->
 	<typeAliases>
-		<typeAlias type="member.model.vo.MemberVO" alias="Member"/>
+		<typeAlias type="member.model.vo.MemberVO" alias="Member" />
 	</typeAliases>
 	
 	<!-- environment : mybatis에서 연동할 DB 정보들을 등록하는 영역 -->
@@ -37,12 +37,12 @@
 				   - UNPOOLED : 사용하지 않겠다.
 		 -->
 		<dataSource type="POOLED">
-			<property name="driver" value="${driver}"/>
-			<property name="url" value="${url}"/>
-			<property name="user" value="${user}"/>
-			<property name="password" value="${password}"/>
-		</dataSource>
-		</environment>
+				<property name="driver" value="${driver}"/>
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>	
 	</environments>
 	
 	<!-- mapper : 실행할 sql문들을 기록해둔 mapper 파일들을 등록하는 영역 -->
