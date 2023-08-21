@@ -9,7 +9,7 @@
 </head>
 <body>
 
-${vo}
+
 <c:choose>
 	<c:when test="${!empty vo}">
 	<h1>로그인 정보</h1>

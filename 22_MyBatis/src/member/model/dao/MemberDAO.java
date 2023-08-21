@@ -34,17 +34,17 @@ public class MemberDAO{
 		return sqlSession.selectList("memberMapper.showAllMember");
 	}
 	
-	public MemberVO findByIdMember(SqlSession sqlSession, String id) {
-		return sqlSession.selectOne("memberMapper.findByIdMember", id);
-		
+	public List<MemberVO> findByIdMember(SqlSession sqlSession, List<String> list) {
+		return sqlSession.selectList("memberMapper.findByIdMember", list);
 	}
+	
 	
 	public MemberVO login(SqlSession sqlSession, MemberVO vo) {
 		return sqlSession.selectOne("memberMapper.login", vo);
 	}
 	
 	public int updateMember(SqlSession sqlSession, MemberVO vo) {
-		return sqlSession.update("memberMapper.login", vo);
+		return sqlSession.update("memberMapper.updateMember", vo);
 	}
 	
 

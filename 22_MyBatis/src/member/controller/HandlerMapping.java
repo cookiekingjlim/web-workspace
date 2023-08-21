@@ -23,7 +23,7 @@ public class HandlerMapping {
 //			System.out.println("adsads");
 			controller = new RegisterController();
 		} else if(command.equals("login.do")) {
-//			System.out.println("adsads");
+			System.out.println("adsads");
 			controller = new LoginController();
 		} else if(command.equals("update.do")) {
 			controller = new UpdateController();

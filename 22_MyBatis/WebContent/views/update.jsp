@@ -18,13 +18,25 @@
 	%>
 	--%>
 		<form action="/update.do" method="post">
-		<input type="hidden" name="command" value="update">
+		
+		<!-- <input type="hidden" name="command" value="update"> -->
+		
 		아이디 : <input type="text" name="id" value="${vo.id}" readonly><br>
 		비밀번호 : <input type="password" name="password" value="${vo.password}" required><br>
 		이름 : <input type="text" name="name" value="${vo.name}" required ><br>
 		주소 : <input type="text" name="address" value="${vo.address}" required><br>
 		<input type="submit" value="변경하기">
 		</form>
+		
+		
+		<h2>비밀번호만 변경</h2>
+		<form action="/update.do" method="post">
+			ID : <input type="text" name="id" value="${vo.id}" readonly><br>
+			PASSWORD : <input type="password" name="password" value="${vo.password}"><br>
+			<input type="submit" value="정보수정">
+		</form>
+		
+		
 		<a href="/index.jsp">첫 페이지로 돌아가기</a>
 
 	<%--<% } --%>
