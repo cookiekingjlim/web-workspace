@@ -5,20 +5,66 @@
 
 <!-- 
 	resultMap에서 TB_STUDENT, TB_DEPARTMENT
-	id, result <-- 앞에서 배운 건 여기까지였다면,
+	id, result < 앞에서 배운 건 여기까지였다면,
 	하나로 연결시키려면 <association property="department" resultMap="departmentMap"/> 사용해야함
 	
 	showStudent
  -->
  
  <!-- config에서 지정한 alias를 type에 집어넣는 것 -->
+ <!-- DB컬럼이랑 자바에 쓰이는 변수명이 다른 경우에만 쓰이는 것 -->
  	<resultMap type="Student" id="studentMap">
- 		<
+ 		<id property="studentNo" column="student_no"/>
+ 		<result property = "studentName" column="student_name"/>
+ 		<result property = "studentAddress" column="student_address"/>
+ 		<association property="department" resultMap="departmentMap"/>
+	 </resultMap>
+	 
+	<resultMap type="Department" id="departmentMap">
+ 		<id property="departmentNo" column="department_no"/>
+ 		<result property = "departmentName" column="department_name"/>
+ 		<result property = "category" column="category"/>
 	 </resultMap>
  
- <select id = "showStudent" parameterType ="String>">
+ <!-- parameterType 대신 resultMap="studentMap"으로 리스트 나오나 확인 먼저 해봐, 여기에는 타입 또는 맵이 옴 -->
+ <select id = "showStudent"  resultMap="studentMap" parameterType ="String">
  	<!-- #{word} : 조건 - word가 null인지 아닌지
  		WHERE student_no, student_name, student_address, department_name, category랑 word가 포함되어 있는지
  		이 중 하나만 걸려도 되니까 OR로 처리
  	 -->
- </select>
+ 	 SELECT student_no, student_name, student_address, department_no, department_name, category
+ 	 FROM tb_student
+ 	 JOIN tb_department USING (department_no)
+ 	 
+ 	 <where>
+ 	 	<if test="word != null">
+ 	 		student_no like '%'||#{word}||'%'
+ 	 		OR student_name like '%'||#{word}||'%'
+ 	 		OR student_address like '%'||#{word}||'%'
+ 	 		OR department_name like '%'||#{word}||'%'
+ 	 		OR category like '%'||#{word}||'%'
+ 	 	</if>
+ 	 	
+ 	 </where>
+ 	 
+<!--  
+ 	 <trim prefix="WHERE" prefixOverrides="AND|OR">
+ 	 	<if test="word != null">
+ 	 		student_no LIKE '%'||#{word}||'%'
+ 	 	</if>
+ 	 	<if test="word != null">
+ 	 		OR student_name LIKE '%'||#{word}||'%'
+ 	 	</if>
+ 	 	<if test="word != null">
+ 	 		OR student_address LIKE '%'||#{word}||'%'
+ 	 	</if>
+ 	 	<if test="word != null">
+ 	 		OR department_name LIKE '%'||#{word}||'%'
+ 	 	</if>
+ 	 	<if test="word != null">
+ 	 		OR category LIKE '%'||#{word}||'%'
+ 	 	</if>
+ 	 </trim>
+-->	 
+  </select>
+  </mapper>
